@@ -181,7 +181,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update tar gzip ansible aws-cli
-            pip3 -U paramiko
+
           # attach workspace
       - attach_workspace:
           at: ~/
@@ -204,8 +204,8 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths: [project/backend]
-      - destroy-environment:
-          workflow-id: ${CIRCLE_WORKFLOW_ID:0:7}
+      # - destroy-environment:
+          # workflow-id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   run-migrations:
     docker:
